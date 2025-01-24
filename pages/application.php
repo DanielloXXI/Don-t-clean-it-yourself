@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!array_key_exists('id_user',$_SESSION)){
+    header('Location: '.'../pages/auth.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -9,6 +15,7 @@
 </head>
 
 <body>
+
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-3 col-md-3 mb-2 mb-md-0">
@@ -17,16 +24,16 @@
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
-                <li></li>
+                <li><a href="../server/logout.php" class="btn btn-primary">Logout</a></li>
             </ul>
         </header>
         <main class="main">
             <div class="col-12 col-lg-6 mx-auto">
-                <form class="border border-1 rounded p-4 needs-validation" name="application" novalidate>
+                <form action="../server/new-application.php" class="border border-1 rounded p-4 needs-validation" name="application" method="post" novalidate>
                     <h2 class="mb-3">Формирование заявки</h2>
                     <div class="mb-3">
                         <label for="exampleInputAdress1" class="form-label">Adress</label>
-                        <input type="text" name="adress" class="form-control" id="exampleInputAdress1" aria-describedby="adressHelp" required>
+                        <input type="text" name="address" class="form-control" id="exampleInputAdress1" aria-describedby="adressHelp" pattern="/[^\w\s]/gi, ''" required>
                         <div class="invalid-feedback">
                             Введите адрес
                         </div>
@@ -46,31 +53,31 @@
                         </div>
                     </div>
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value='Общий клининг' required>
                         <label class="form-check-label" for="flexRadioDefault1">
                             Общий клининг
                         </label>
                     </div>
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value='Генеральная уборка' required>
                         <label class="form-check-label" for="flexRadioDefault2">
                             Генеральная уборка
                         </label>
                     </div>
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" required>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value='Послестроительная уборка' required>
                         <label class="form-check-label" for="flexRadioDefault3">
                             Послестроительная уборка
                         </label>
                     </div>
                     <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" required>
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" value='Химчистка ковров и мебели' required>
                         <label class="form-check-label" for="flexRadioDefault4">
                             Химчистка ковров и мебели
                         </label>
                     </div>
                     <div class="form-check mb-3">
-                        <input class="form-check-input another" type="radio" name="flexRadioDefault" id="flexRadioDefault5" required>
+                        <input class="form-check-input another" type="radio" name="flexRadioDefault" id="flexRadioDefault5" value='clean5' required>
                         <label class="form-check-label" for="flexRadioDefault5">
                             Иная услуга
                         </label>
@@ -79,13 +86,13 @@
                         <label for="exampleInputTel" class="form-label">Предпочтительный тип оплаты</label>
                         <div class="d-flex mb-3 ">
                             <div>
-                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault6" required>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault6" value="Банковская карта" required>
                                 <label class="form-check-label" for="flexRadioDefault6">
                                     Банковская карта
                                 </label>
                             </div>
                             <div class="ms-5">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault7" required>
+                                <input class="form-check-input" type="radio" name="flexRadioDefault2" id="flexRadioDefault7" value="Наличные" required>
                                 <label class="form-check-label" for="flexRadioDefault7">
                                     Наличные
                                 </label>

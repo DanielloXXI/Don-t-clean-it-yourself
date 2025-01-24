@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(!array_key_exists('id_user',$_SESSION)){
+    header('Location: '.'../pages/auth.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -17,15 +23,17 @@
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
-                <li></li>
-                <li><a href="#" class="btn btn-primary">Sign-up</a></li>
+                <li><a href="../server/logout.php" class="btn btn-primary">Logout</a></li>
             </ul>
         </header>
         <main class="main">
             <div class="col-12 col-md-6 mx-auto">
                 <div class="card">
                     <div class="card-header d-flex">
-                        <button class="btn btn-primary ms-auto">Новая заявка</button>
+                        <?
+                        session_start();
+                        echo $_SESSION['id_user']?>
+                        <button class="btn btn-primary ms-auto"><a href="application.php" class="text-decoration-none text-reset">Новая заявка</a></button>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Заявка от 20.20.24</h5>

@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(array_key_exists('id_user',$_SESSION)){
+    header('Location: '.'../pages/index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -17,13 +23,13 @@
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
-                <li></li>
-                <li><a href="#" class="btn btn-primary">Sign-up</a></li>
+                <li><a href="auth.php" class="btn btn-outline-primary me-2">Login</a></li>
+                <li><a href="reg.php" class="btn btn-primary">Sign-up</a></li>
             </ul>
         </header>
         <main class="main">
             <div class="col-12 col-md-6 mx-auto">
-                <form class="border border-1 rounded p-4 needs-validation" name="reg" novalidate>
+                <form action="../server/server.php" class="border border-1 rounded p-4 needs-validation" name="reg" method="post" novalidate>
                     <h2 class="mb-3">Регистрация</h2>
                     <div class="mb-3">
                         <label for="exampleInputLogin1" class="form-label">Login</label>
@@ -40,8 +46,8 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputName1" class="form-label">Full name</label>
-                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp" required pattern="[А-Яа-яЁё\s\-]{2,50}">
+                        <label for="exampleInputFIO" class="form-label">Full name</label>
+                        <input type="text" name="FIO" class="form-control" id="FIO" aria-describedby="nameHelp" required pattern="[А-Яа-яЁё\s\-]{2,50}">
                         <div class="invalid-feedback">
                             ФИО может содержать от 2 до 50 символов
                         </div>
@@ -60,8 +66,17 @@
                             Введите корректный email
                         </div>
                     </div>
+                    <input type="hidden" name="source" value="reg" id="">
                     <button type="submit" class="btn btn-primary">Отправить</button>
                 </form>
+                <?php 
+                    if(array_key_exists('response',$_SESSION)){
+                        echo <<< HERE
+                            <div class='alert alert-danger py-2 mt-2'>{$_SESSION['response']}</div>       
+                        HERE;
+                    }
+                    unset($_SESSION["response"]);
+                ?>
             </div>
         </main>
     </div>

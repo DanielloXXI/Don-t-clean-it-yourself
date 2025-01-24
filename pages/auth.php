@@ -1,3 +1,9 @@
+<?php 
+session_start();
+if(array_key_exists('id_user',$_SESSION)){
+    header('Location: '.'../pages/index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -7,8 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Авторизация</title>
 </head>
-
-<body>
+   
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-3 col-md-3 mb-2 mb-md-0">
@@ -17,18 +22,18 @@
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="btn btn-outline-primary me-2">Login</a></li>
-                <li><a href="#" class="btn btn-primary">Sign-up</a></li>
+                <li><a href="auth.php" class="btn btn-primary me-2">Login</a></li>
+                <li><a href="reg.php" class="btn btn-outline-primary">Sign-up</a></li>
             </ul>
         </header>
         <main class="main">
             <div class="col-12 col-md-6 mx-auto">
 
-                <form action="server.php" method="post" class="border border-1 rounded p-4 needs-validation" novalidate>
+                <form action="../server/server.php" method="post" class="border border-1 rounded p-4 needs-validation" novalidate>
                     <h2 class="mb-3">Авторизуйтесь</h2>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Login</label>
-                        <input type="text" name="email" class="form-control" id="validationServer01" aria-describedby="emailHelp" value="Otto" minlength="3" required pattern='[0-9A-Za-z\s\-\w]{2,30}'>
+                        <input type="text" name="login" class="form-control" id="validationServer01" aria-describedby="emailHelp" value="Otto" minlength="3" required pattern='[0-9A-Za-z\s\-\w]{2,30}'>
                         <div class="valid-feedback">
                             Looks good
                         </div>
@@ -48,6 +53,16 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Отправить</button>
                 </form>
+                <a href="../server/test.php?id=6"></a>
+                <?
+                    if(array_key_exists('response',$_SESSION)){
+                        echo <<< HERE
+                            <div class='alert alert-danger py-2 mt-2'>{$_SESSION['response']}</div>       
+                        HERE;
+                    }
+                    unset($_SESSION["response"]);
+                ?>
+                
             </div>
         </main>
     </div>
