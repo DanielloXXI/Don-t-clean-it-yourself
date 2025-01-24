@@ -1,40 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>Регистрация</title>
 </head>
+
 <body>
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-3 col-md-3 mb-2 mb-md-0">
-                <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                    <img src="../media/logo.webp" alt="" width="60">
+                <a href="./index.php" class="d-inline-flex link-body-emphasis text-decoration-none">
+                    <img src="../media/logo.webp" alt="Лого" width="60">
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="btn btn-outline-primary me-2">Login</a></li>
+                <li></li>
                 <li><a href="#" class="btn btn-primary">Sign-up</a></li>
             </ul>
         </header>
         <main class="main">
             <div class="col-12 col-md-6 mx-auto">
-                <form action="server.php" method="post" class="border border-1 rounded p-4">
+                <form class="border border-1 rounded p-4 needs-validation" name="reg" novalidate>
                     <h2 class="mb-3">Регистрация</h2>
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label for="exampleInputLogin1" class="form-label">Login</label>
+                        <input type="text" name="login" class="form-control" id="exampleInputLogin1" aria-describedby="loginHelp" required pattern="[0-9A-Za-z\s\-\w]{3,25}" maxlength="25" minlength="3">
+                        <div class="invalid-feedback">
+                            Логин должен содержать от 3 до 25 символов
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" required minlength="6">
+                        <div class="invalid-feedback">
+                            Пароль должен содержать не менее 6 символов
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="mb-3">
+                        <label for="exampleInputName1" class="form-label">Full name</label>
+                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="nameHelp" required pattern="[А-Яа-яЁё\s\-]{2,50}">
+                        <div class="invalid-feedback">
+                            ФИО может содержать от 2 до 50 символов
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputTel" class="form-label">Telephone</label>
+                        <input type="tel" name="tel" class="form-control" id="exampleInputTel1" aria-describedby="telHelp" required pattern="\+7[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}" placeholder="Формат: +79998886655">
+                        <div class="invalid-feedback">
+                            Введите корректный телефон в формате: +79998886655
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        <div class="invalid-feedback">
+                            Введите корректный email
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
                 </form>
             </div>
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../scripts/script.js"></script>
 </body>
+
+
 </html>
