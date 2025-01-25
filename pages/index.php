@@ -16,10 +16,11 @@ if(!array_key_exists('id_user',$_SESSION)){
 
 <body>
     <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <div class="col-3 col-md-3 mb-2 mb-md-0">
-                <a href="./index.php" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <header class="d-flex flex-column flex-sm-row flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+            <div class="mb-2 mb-md-0">
+                <a href="./index.php" class="d-inline-flex link-body-emphasis text-decoration-none align-items-center">
                     <img src="../media/logo.webp" alt="Лого" width="60">
+                    <span class="fs-4 ms-2">Мой не сам</span>
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
@@ -29,10 +30,8 @@ if(!array_key_exists('id_user',$_SESSION)){
         <main class="main">
             <div class="col-12 col-md-6 mx-auto">
                 <div class="card">
-                    <div class="card-header d-flex">
-                        <?
-                        session_start();
-                        echo $_SESSION['id_user']?>
+                    <div class="card-header d-flex align-items-center">
+                        <span class="h4 mb-0">Ваши заявки</span>
                         <button class="btn btn-primary ms-auto"><a href="application.php" class="text-decoration-none text-reset">Новая заявка</a></button>
                     </div>
                     <div class="card-body">

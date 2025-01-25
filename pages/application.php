@@ -17,10 +17,11 @@ if(!array_key_exists('id_user',$_SESSION)){
 <body>
 
     <div class="container">
-        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <div class="col-3 col-md-3 mb-2 mb-md-0">
-                <a href="./index.php" class="d-inline-flex link-body-emphasis text-decoration-none">
+        <header class="d-flex flex-column flex-sm-row flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+            <div class="mb-2 mb-md-0">
+                <a href="./index.php" class="d-inline-flex link-body-emphasis text-decoration-none align-items-center">
                     <img src="../media/logo.webp" alt="Лого" width="60">
+                    <span class="fs-4 ms-2">Мой не сам</span>
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
