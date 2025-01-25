@@ -6,7 +6,6 @@ if(!array_key_exists('id_user',$_SESSION)){
 if(array_key_exists('admin',$_SESSION)){
     header('Location: '.'../pages/admin.php');
 }
-echo $_SESSION['id_user'];
 $mysql = new mysqli(hostname: "mysql-8.0",username: "root",password: "",database: "db_nissan");
 $id_user = $_SESSION['id_user'];
 ?>
@@ -38,7 +37,7 @@ $id_user = $_SESSION['id_user'];
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
                         <span class="h4 mb-0">Ваши заявки</span>
-                        <button class="btn btn-primary ms-auto"><a href="application.php" class="text-decoration-none text-reset">Новая заявка</a></button>
+                        <button class="btn btn-primary ms-auto"><a href="application.php" class="text-decoration-none text-reset" title="Оставить новую заявку">Новая заявка</a></button>
                     </div>
                     <?php
                     $query = "SELECT * FROM (SELECT * FROM applications WHERE id_user LIKE $id_user) AS user_applications INNER JOIN (SELECT id_user, email, FIO FROM users) AS user_data ON user_data.id_user = user_applications.id_user  
@@ -56,10 +55,13 @@ ORDER BY `user_applications`.`date` DESC";
                                 <p class="card-text">
                                     {$associativeArray['address']}<br>
                                     {$associativeArray['serviceType']}<br>
-                                    Статус: {$associativeArray['status']}
-                                </p>
-                            </div>
+                                    Статус: {$associativeArray['status']}<br>
                         HERE;
+                        if($associativeArray['reason']){
+                            echo "Причина: ".$associativeArray['reason'];
+                        }
+                        echo "</p>
+                            </div>";
                     }
                     ?>
                     

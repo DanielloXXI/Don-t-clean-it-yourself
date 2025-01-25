@@ -29,7 +29,7 @@ $id_user = $_SESSION['id_user'];
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
-                <li><a href="../server/logout.php" class="btn btn-primary">Logout</a></li>
+                <li><a href="../server/logout.php" class="btn btn-primary" title='Выйти из аккаунта'>Logout</a></li>
             </ul>
         </header>
         <main class="main">
@@ -37,7 +37,7 @@ $id_user = $_SESSION['id_user'];
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
                         <span class="h4 mb-0">Заявки</span>
-                        <button class="btn btn-primary ms-auto"><a href="application.php" class="text-decoration-none text-reset">Почистить архив</a></button>
+                        <button class="btn btn-primary ms-auto"><a href="./application-clear-approve.php" class="text-decoration-none text-reset" title='Удалить все заявки со статусами "в работе" и "отменена"'>Почистить архив</a></button>
                     </div>
                     <?php
                     $query = "SELECT * FROM applications INNER JOIN (SELECT id_user, email, FIO FROM users) AS user_data ON user_data.id_user = applications.id_user  
@@ -73,9 +73,9 @@ ORDER BY `applications`.`date` DESC, status ASC;";
                                     <div>
                                         <select class="form-select" name="status" id="" style="width: 150px;" required>
                                             <option value="" disabled selected></option>
-                                            <option value="В работе">В работе</option>
-                                            <option value="Выполнена">Выполнена</option>
-                                            <option value="Отменена">Отменена</option>
+                                            <option value="в работе">В работе</option>
+                                            <option value="выполнена">Выполнена</option>
+                                            <option value="отменена">Отменена</option>
                                         </select>
                                     </div>
                                     <button type='submit' class='btn btn-dark h-100' style='opacity:0.7'>Изменить статус</button>

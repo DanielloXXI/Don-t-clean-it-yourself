@@ -8,7 +8,7 @@ selects.forEach((select)=>{
             <input class="form-control" type="text" name="reason" id="reason" required>
         </div>`;
 
-        if(this.value==='Отменена'){
+        if(this.value==='отменена'){
             this.after(div)
         }
         else if(this.nextElementSibling){

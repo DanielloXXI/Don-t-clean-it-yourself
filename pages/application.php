@@ -25,7 +25,7 @@ if(!array_key_exists('id_user',$_SESSION)){
                 </a>
             </div>
             <ul class="nav mb-2 justify-content-center mb-md-0">
-                <li><a href="../server/logout.php" class="btn btn-primary">Logout</a></li>
+                <li><a href="../server/logout.php" class="btn btn-primary" title='Выйти из аккаунта'>Logout</a></li>
             </ul>
         </header>
         <main class="main">
