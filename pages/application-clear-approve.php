@@ -16,7 +16,7 @@ $id_user = $_SESSION['id_user'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Регистрация</title>
+    <title>Мой не сам</title>
 </head>
 
 <body>
@@ -40,7 +40,7 @@ $id_user = $_SESSION['id_user'];
                     </div>
                     <div class="card-body d-flex justify-content-center gap-3">
                         <button class="btn btn-danger"><a href="../scripts/application-clear.php" class="text-decoration-none text-reset">Удалить данные</a></button>
-                        <button class="btn btn-warning"><a href="./admin.php" class="text-decoration-none text-reset">Вернуться</a></button> 
+                        <button class="btn btn-secondary"><a href="./admin.php" class="text-decoration-none text-reset">Вернуться</a></button> 
                     </div>
                 </div>
                 <div class='alert alert-danger py-2 mt-2'>После удаления данные исчезнут навсегда</div>       
