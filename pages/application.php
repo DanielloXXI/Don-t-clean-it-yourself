@@ -30,11 +30,11 @@ if(!array_key_exists('id_user',$_SESSION)){
         </header>
         <main class="main">
             <div class="col-12 col-lg-6 mx-auto">
-                <form action="../server/new-application.php" class="border border-1 rounded p-4 needs-validation" name="application" method="post" novalidate>
+                <form action="../server/application-create.php" class="border border-1 rounded p-4 needs-validation" name="application" method="post" novalidate>
                     <h2 class="mb-3">Формирование заявки</h2>
                     <div class="mb-3">
                         <label for="exampleInputAdress1" class="form-label">Adress</label>
-                        <input type="text" name="address" class="form-control" id="exampleInputAdress1" aria-describedby="adressHelp" pattern="[А-Яа-яЁё0-9.\w\s]{5,200}" required>
+                        <input type="text" name="address" class="form-control" id="exampleInputAdress1" aria-describedby="adressHelp" pattern="[А-Яа-яЁё0-9.,\w\s]{5,200}" required>
                         <div class="invalid-feedback">
                             Введите адрес
                         </div>

@@ -55,10 +55,13 @@ if (!array_key_exists('auth', $_SESSION)){
         $query = "SELECT * FROM users WHERE login='$login' AND password='$password'";
         $res = mysqli_query($mysql, $query);
         $user = mysqli_fetch_assoc($res);
+        echo $user['login'];
         if (!empty($user)) {
             $_SESSION['auth'] = true;
             if($user['login']==="adminka")      {
                 $_SESSION["admin"] = true;
+                $_SESSION['id_user'] = $user['id_user'];
+                // id user для проверки на вход админа
                 unset($_SESSION["response"]);
                 header('Location: '.'../pages/admin.php');
                 exit();
