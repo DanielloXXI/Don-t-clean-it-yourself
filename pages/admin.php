@@ -37,7 +37,7 @@ $id_user = $_SESSION['id_user'];
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
                         <span class="h4 mb-0">Заявки</span>
-                        <button class="btn btn-primary ms-auto"><a href="./application-clear-approve.php" class="text-decoration-none text-reset" title='Удалить все заявки со статусами "в работе" и "отменена"'>Почистить архив</a></button>
+                        <button class="btn btn-primary ms-auto"><a href="./application-clear-approve.php" class="text-decoration-none text-reset" title='Удалить все заявки со статусами "выполнена" и "отменена"'>Почистить архив</a></button>
                     </div>
                     <?php
                     $query = "SELECT * FROM applications INNER JOIN (SELECT id_user, email, FIO FROM users) AS user_data ON user_data.id_user = applications.id_user  
