@@ -34,7 +34,7 @@ if(!array_key_exists('id_user',$_SESSION)){
                     <h2 class="mb-3">Формирование заявки</h2>
                     <div class="mb-3">
                         <label for="exampleInputAdress1" class="form-label">Adress</label>
-                        <input type="text" name="address" class="form-control" id="exampleInputAdress1" aria-describedby="adressHelp" pattern="/[^\w\s]/gi, ''" required>
+                        <input type="text" name="address" class="form-control" id="exampleInputAdress1" aria-describedby="adressHelp" pattern="[А-Яа-яЁё0-9.\w\s]{5,200}" required>
                         <div class="invalid-feedback">
                             Введите адрес
                         </div>
