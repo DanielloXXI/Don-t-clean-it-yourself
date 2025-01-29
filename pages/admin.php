@@ -1,4 +1,5 @@
-<?php 
+<?php
+include("../server/applications-sort.php");
 session_start();
 if(!array_key_exists('id_user',$_SESSION)){
     header('Location: '.'../pages/auth.php');
@@ -6,8 +7,7 @@ if(!array_key_exists('id_user',$_SESSION)){
 if(!array_key_exists('admin',$_SESSION)){
     header('Location: '.'../pages/index.php');
 }
-$mysql = new mysqli(hostname: "mysql-8.0",username: "root",password: "",database: "db_nissan");
-$id_user = $_SESSION['id_user'];
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -34,62 +34,43 @@ $id_user = $_SESSION['id_user'];
         </header>
         <main class="main">
             <div class="col-12 col-sm-10 col-lg-6 mx-auto">
-                <div class="card">
-                    <div class="card-header d-flex align-items-center">
-                        <span class="h4 mb-0">Заявки</span>
-                        <button class="btn btn-primary ms-auto"><a href="./application-clear-approve.php" class="text-decoration-none text-reset" title='Удалить все заявки со статусами "выполнена" и "отменена"'>Почистить архив</a></button>
-                    </div>
-                    <?php
-                    $query = "SELECT * FROM applications INNER JOIN (SELECT id_user, email, FIO FROM users) AS user_data ON user_data.id_user = applications.id_user  
-ORDER BY `applications`.`date` DESC, status ASC;";
-                    $res = mysqli_query($mysql,$query);
+                <div class="nav nav-pills" id="v-pills-tab" role="tablist">
+                    <button class="nav-link active" id="tabbtn1" data-bs-toggle="pill" data-bs-target="#all-app" type="button" role="tab" aria-controls="v-pills-all" aria-selected="true">Вcе заявки</button>    
+                    <button class="nav-link" id="tabbtn2" data-bs-toggle="pill" data-bs-target="#process-app" type="button" role="tab" aria-controls="v-pills-all" aria-selected="true">В работе</button>
+                    <button class="nav-link" id="tabbtn1" data-bs-toggle="pill" data-bs-target="#cancel-app" type="button" role="tab" aria-controls="v-pills-all" aria-selected="true">Отменены</button>
                     
-                    $resArray = array();
-                    while ($row = mysqli_fetch_assoc($res)){
-                        $resArray[] = $row;
-                    }
-                    foreach ($resArray as $associativeArray){
-                        
-                        echo <<< HERE
-                            <div class="card-body">
-                                <h5 class="card-title">Заявка на {$associativeArray['date']}</h5>
-                                <p class="card-text">
-                                    Адрес: {$associativeArray['address']}<br>
-                                    {$associativeArray['serviceType']}<br>
-                                    Фио: {$associativeArray['FIO']}<br>
-                                    Тел: {$associativeArray['tel']}<br>
-                                    email: {$associativeArray['email']}<br>
-                                    Оплата: {$associativeArray['payment']}<br>
-                                    Статус: {$associativeArray['status']}<br>
-                        HERE;
-                        if(array_key_exists('reason',$associativeArray)){
-                            if ($associativeArray['reason']){
-                                echo 'Причина: '.$associativeArray['reason']."<br>";
-                                $selected = true;
-                            }
-                        }
-                        echo <<< HERE
-                                </p>
-                                <form action="../server/application-change-status.php" method="post" class='d-flex justify-content-between flex-wrap gap-3'>
-                                    <div>
-                                        <select class="form-select" name="status" id="" style="width: 150px;" required>
-                                            <option value="" disabled selected></option>
-                                            <option value="в работе">В работе</option>
-                                            <option value="выполнена">Выполнена</option>
-                                            <option value="отменена">Отменена</option>
-                                        </select>
-                                    </div>
-                                    <button type='submit' class='btn btn-dark h-100' style='opacity:0.7'>Изменить статус</button>
-                                    <input type='hidden' name='id_application' value="{$associativeArray['id_application']}">
-                                    
-                                </form>
+                </div>
+
+                <div class="tab-content mt-4">
+                    <div class="tab-pane fade active show" id="all-app" role="tabpanel" tabindex="0">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <span class="h4 mb-0">Заявки</span>
+                                <button class="btn btn-primary ms-auto"><a href="./application-clear-approve.php" class="text-decoration-none text-reset" title='Удалить все заявки со статусами "выполнена" и "отменена"'>Почистить архив</a></button>
                             </div>
-                            <hr>
-                        HERE;
+                            <div class="card-body"><?php echo applicationsSort('')?></div>
                         
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="cancel-app" role="tabpanel" tabindex="0">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <span class="h4 mb-0">Заявки</span>
+                                <button class="btn btn-primary ms-auto"><a href="./application-clear-approve.php" class="text-decoration-none text-reset" title='Удалить все заявки со статусами "выполнена" и "отменена"'>Почистить архив</a></button>
+                            </div>
+                            <div class="card-body"><?php echo applicationsSort('отменена')?></div>
                         
-                    }
-                    ?>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="process-app" role="tabpanel" tabindex="0">
+                        <div class="card">
+                            <div class="card-header d-flex align-items-center">
+                                <span class="h4 mb-0">Заявки</span>
+                                <button class="btn btn-primary ms-auto"><a href="./application-clear-approve.php" class="text-decoration-none text-reset" title='Удалить все заявки со статусами "выполнена" и "отменена"'>Почистить архив</a></button>
+                            </div>
+                            <div class="card-body"><?php echo applicationsSort('в работе')?></div>
+                        </div>
+                    </div>
                     
                 </div>
         </main>

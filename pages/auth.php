@@ -55,7 +55,7 @@ if(array_key_exists('id_user',$_SESSION)){
                     <button type="submit" class="btn btn-primary">Отправить</button>
                 </form>
                 <a href="../server/test.php?id=6"></a>
-                <?
+                <?php
                     if(array_key_exists('response',$_SESSION)){
                         echo <<< HERE
                             <div class='alert alert-danger py-2 mt-2'>{$_SESSION['response']}</div>       

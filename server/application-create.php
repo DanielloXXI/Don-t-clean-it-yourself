@@ -1,6 +1,6 @@
 <?php
 session_start();
-$mysql = new mysqli(hostname: "mysql-8.0",username: "root",password: "",database: "db_nissan");
+$mysql = new mysqli(hostname: "localhost",username: "axmiaxhg",password: "R4Kss9",database: "axmiaxhg_m1");
 if(!array_key_exists('id_user',$_SESSION)){
     header('Location: '.'../pages/auth.php');
 }
