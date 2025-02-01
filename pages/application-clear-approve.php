@@ -6,7 +6,7 @@ if(!array_key_exists('id_user',$_SESSION)){
 if(!array_key_exists('admin',$_SESSION)){
     header('Location: '.'../pages/index.php');
 }
-$mysql = new mysqli(hostname: "mysql-8.0",username: "root",password: "",database: "db_nissan");
+$mysql = new mysqli(hostname: "mysql-8.2",username: "root",password: "",database: "db_nissan");
 $id_user = $_SESSION['id_user'];
 ?>
 <!DOCTYPE html>
@@ -39,14 +39,14 @@ $id_user = $_SESSION['id_user'];
                         <span class="h4 mb-0 ">Вы уверены?</span>
                     </div>
                     <div class="card-body d-flex justify-content-center gap-3">
-                        <button class="btn btn-danger"><a href="../scripts/application-clear.php" class="text-decoration-none text-reset">Удалить данные</a></button>
+                        <button class="btn btn-danger"><a href="../server/application-clear.php" class="text-decoration-none text-reset">Удалить данные</a></button>
                         <button class="btn btn-secondary"><a href="./admin.php" class="text-decoration-none text-reset">Вернуться</a></button> 
                     </div>
                 </div>
                 <div class='alert alert-danger py-2 mt-2'>После удаления данные исчезнут навсегда</div>       
         </main>
     </div>
-    <script src="../scripts/abc.js"></script>
+    <script src="../scripts/cancel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="../scripts/script.js"></script>
 </body>

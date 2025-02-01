@@ -5,12 +5,16 @@ div.innerHTML = `
         <div class="invalid-feedback">
             Введите название другой услуги
         </div>`;
-     
-select.addEventListener('change', function(evt){
-    if(this.value==='Иная услуга')this.after(div)
-    else div.remove()
-})    
-        
+div.setAttribute('class', 'another');
+select.addEventListener('change', function () {
+    if (this.value === 'Иная услуга') {
+        this.after(div)
+    }
+    else if (this.nextElementSibling.className === 'another') {
+        div.remove();
+    }
+})
+
 
 
 

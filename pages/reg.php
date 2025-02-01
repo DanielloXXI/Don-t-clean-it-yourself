@@ -1,7 +1,7 @@
-<?php 
+<?php
 session_start();
-if(array_key_exists('id_user',$_SESSION)){
-    header('Location: '.'../pages/index.php');
+if (array_key_exists('id_user', $_SESSION)) {
+    header('Location: ' . '../pages/index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -50,7 +50,7 @@ if(array_key_exists('id_user',$_SESSION)){
                         <label for="exampleInputFIO" class="form-label">Full name</label>
                         <input type="text" name="FIO" class="form-control" id="FIO" aria-describedby="nameHelp" required pattern="[А-Яа-яЁё\s\-]{2,50}">
                         <div class="invalid-feedback">
-                            ФИО может содержать от 2 до 50 символов
+                            ФИО должно быть написано кириллицей, а также содержать от 2 до 50 символов
                         </div>
                     </div>
                     <div class="mb-3">
@@ -70,13 +70,13 @@ if(array_key_exists('id_user',$_SESSION)){
                     <input type="hidden" name="source" value="reg" id="">
                     <button type="submit" class="btn btn-primary">Отправить</button>
                 </form>
-                <?php 
-                    if(array_key_exists('response',$_SESSION)){
-                        echo <<< HERE
+                <?php
+                if (array_key_exists('response', $_SESSION)) {
+                    echo <<< HERE
                             <div class='alert alert-danger py-2 mt-2'>{$_SESSION['response']}</div>       
                         HERE;
-                    }
-                    unset($_SESSION["response"]);
+                }
+                unset($_SESSION["response"]);
                 ?>
             </div>
         </main>

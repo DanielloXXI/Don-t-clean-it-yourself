@@ -1,12 +1,12 @@
-<?php 
+<?php
 session_start();
-if(!array_key_exists('id_user',$_SESSION)){
-    header('Location: '.'../pages/auth.php');
+if (!array_key_exists('id_user', $_SESSION)) {
+    header('Location: ' . '../pages/auth.php');
 }
-if(array_key_exists('admin',$_SESSION)){
-    header('Location: '.'../pages/admin.php');
+if (array_key_exists('admin', $_SESSION)) {
+    header('Location: ' . '../pages/admin.php');
 }
-$mysql = new mysqli(hostname: "localhost",username: "axmiaxhg",password: "R4Kss9",database: "axmiaxhg_m1");
+$mysql = new mysqli(hostname: "mysql-8.2", username: "root", password: "", database: "db_nissan");
 $id_user = $_SESSION['id_user'];
 ?>
 <!DOCTYPE html>
@@ -42,13 +42,13 @@ $id_user = $_SESSION['id_user'];
                     <?php
                     $query = "SELECT * FROM (SELECT * FROM applications WHERE id_user LIKE $id_user) AS user_applications INNER JOIN (SELECT id_user, email, FIO FROM users) AS user_data ON user_data.id_user = user_applications.id_user  
 ORDER BY `user_applications`.`date` DESC";
-                    $res = mysqli_query($mysql,$query);
-                    
+                    $res = mysqli_query($mysql, $query);
+
                     $resArray = array();
-                    while ($row = mysqli_fetch_assoc($res)){
+                    while ($row = mysqli_fetch_assoc($res)) {
                         $resArray[] = $row;
                     }
-                    foreach ($resArray as $associativeArray){
+                    foreach ($resArray as $associativeArray) {
                         echo <<< HERE
                             <div class="card-body">
                                 <h5 class="card-title">Заявка на {$associativeArray['date']}</h5>
@@ -58,16 +58,16 @@ ORDER BY `user_applications`.`date` DESC";
                                     Оплата: {$associativeArray['payment']}<br>
                                     Статус: {$associativeArray['status']}<br>
                         HERE;
-                        if($associativeArray['reason']){
-                            echo "Причина: ".$associativeArray['reason'];
+                        if ($associativeArray['reason']) {
+                            echo "Причина: " . $associativeArray['reason'];
                         }
                         echo "</p>
                             </div>";
                     }
                     ?>
-                    
-                    </div>
+
                 </div>
+            </div>
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
