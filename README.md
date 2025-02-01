@@ -2,7 +2,7 @@
 
 ## Test
 
-- **Save this repo in your server (ospanel), then create a mysql database named as "db_nissan", then import our dump "db_nissan"** 
+- **Save this repo in your server (ospanel), then create a mysql database named as "db_nissan" (You can come up with your own name, you just need to register it in the connection to the database.), then import our dump "db_nissan"** 
 - **In file ./server/connect.php you can change database connection settings** 
 - **Admin login and password: adminka password**
 - **Start on the server your site!**
