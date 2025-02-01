@@ -34,7 +34,7 @@ if(array_key_exists('id_user',$_SESSION)){
                     <h2 class="mb-3">Авторизуйтесь</h2>
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Login</label>
-                        <input type="text" name="login" class="form-control" id="validationServer01" aria-describedby="emailHelp" value="Otto" minlength="3" required pattern='[0-9A-Za-z\s\-\w]{2,30}'>
+                        <input type="text" name="login" class="form-control" id="validationServer01" aria-describedby="emailHelp" minlength="3" required pattern='[0-9A-Za-z\s\-\w]{2,30}'>
                         <div class="valid-feedback">
                             Looks good
                         </div>
