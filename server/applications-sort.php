@@ -1,7 +1,7 @@
 <?php
 function applicationsSort($status)
 {
-    $mysql = new mysqli(hostname: "mysql-8.2", username: "root", password: "", database: "db_nissan");
+    include("../server/connect.php");
     $data = '';
     if ($status) {
         $query = "SELECT * FROM (SELECT * FROM applications WHERE status='$status')AS current_applications INNER JOIN (SELECT id_user, email, FIO FROM users) AS user_data ON user_data.id_user = current_applications.id_user  
@@ -13,11 +13,17 @@ function applicationsSort($status)
         }
         if ($resArray) {
             foreach ($resArray as $associativeArray) {
-                $add_data = '';
+                $reason = '';
+                $customService ='';
                 if ($associativeArray['reason']) {
-                    $add_data = 'Причина: ' . $associativeArray['reason'] . '<br>';
+                    $reason = 'Причина: ' . $associativeArray['reason'] . '<br>';
                 } else {
-                    $add_data = '';
+                    $reason = '';
+                }
+                if ($associativeArray['serviceType'] === 'Иная услуга') {
+                    $customService = $associativeArray['customService'] . '<br>';
+                } else {
+                    $customService = '';
                 }
                 $data .= sprintf(
                     '
@@ -26,6 +32,7 @@ function applicationsSort($status)
                         <p class="card-text">
                             Адрес: %s<br>
                             %s<br>
+                            %s
                             Фио: %s<br>
                             Тел: %s<br>
                             email: %s<br>
@@ -54,12 +61,13 @@ function applicationsSort($status)
                     $associativeArray['date'],
                     $associativeArray['address'],
                     $associativeArray['serviceType'],
+                    $customService,
                     $associativeArray['FIO'],
                     $associativeArray['tel'],
                     $associativeArray['email'],
                     $associativeArray['payment'],
                     $associativeArray['status'],
-                    $add_data,
+                    $reason,
                     $associativeArray['id_application']
                 );
             }
@@ -78,11 +86,17 @@ function applicationsSort($status)
         }
         if ($resArray) {
             foreach ($resArray as $associativeArray) {
-                $add_data = '';
+                $reason = '';
+                $customService ='';
                 if ($associativeArray['reason']) {
-                    $add_data = 'Причина: ' . $associativeArray['reason'] . '<br>';
+                    $reason = 'Причина: ' . $associativeArray['reason'] . '<br>';
                 } else {
-                    $add_data = '';
+                    $reason = '';
+                }
+                if ($associativeArray['serviceType'] === 'Иная услуга') {
+                    $customService = $associativeArray['customService'] . '<br>';
+                } else {
+                    $customService = '';
                 }
                 $data .= sprintf(
                     '
@@ -91,6 +105,7 @@ function applicationsSort($status)
                         <p class="card-text">
                             Адрес: %s<br>
                             %s<br>
+                            %s
                             Фио: %s<br>
                             Тел: %s<br>
                             email: %s<br>
@@ -119,12 +134,13 @@ function applicationsSort($status)
                     $associativeArray['date'],
                     $associativeArray['address'],
                     $associativeArray['serviceType'],
+                    $customService,
                     $associativeArray['FIO'],
                     $associativeArray['tel'],
                     $associativeArray['email'],
                     $associativeArray['payment'],
                     $associativeArray['status'],
-                    $add_data,
+                    $reason,
                     $associativeArray['id_application']
                 );
             }

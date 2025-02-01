@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$mysql = new mysqli(hostname: "mysql-8.2", username: "root", password: "", database: "db_nissan");
+include("../server/connect.php");
 
 if (!array_key_exists('auth', $_SESSION)) {
     // Регистрация

@@ -6,7 +6,7 @@ if (!array_key_exists('id_user', $_SESSION)) {
 if (array_key_exists('admin', $_SESSION)) {
     header('Location: ' . '../pages/admin.php');
 }
-$mysql = new mysqli(hostname: "mysql-8.2", username: "root", password: "", database: "db_nissan");
+include("../server/connect.php");
 $id_user = $_SESSION['id_user'];
 ?>
 <!DOCTYPE html>
@@ -55,13 +55,18 @@ ORDER BY `user_applications`.`date` DESC";
                                 <p class="card-text">
                                     {$associativeArray['address']}<br>
                                     {$associativeArray['serviceType']}<br>
+                        HERE;
+                        if($associativeArray['serviceType'] === 'Иная услуга'){
+                            echo $associativeArray['customService']."<br>";
+                        }
+                        echo <<< HERE
                                     Оплата: {$associativeArray['payment']}<br>
                                     Статус: {$associativeArray['status']}<br>
                         HERE;
                         if ($associativeArray['reason']) {
                             echo "Причина: " . $associativeArray['reason'];
                         }
-                        echo "</p>
+                        echo    "</p>
                             </div>";
                     }
                     ?>

@@ -6,7 +6,6 @@ if(!array_key_exists('id_user',$_SESSION)){
 if(!array_key_exists('admin',$_SESSION)){
     header('Location: '.'../pages/index.php');
 }
-$mysql = new mysqli(hostname: "mysql-8.2",username: "root",password: "",database: "db_nissan");
 $id_user = $_SESSION['id_user'];
 ?>
 <!DOCTYPE html>
