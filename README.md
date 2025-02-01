@@ -29,14 +29,14 @@ In this project you can leave requests for cleaning!
 - **Enter email** 
 - **Get a successful registration!**
 
-<img src="./media/ReadMe/register.gif" width="100%">
+<img src="./media/Readme/register.gif" width="100%">
 
 ### **Congratulations!**
 
 ## You can login and create your application
 
-<img src="./media/ReadMe/login_and_create.gif" width="100%">
+<img src="./media/Readme/login_and_create.gif" width="100%">
 
 ## Are you an admin? I didn't know...
 
-<img src="./media/ReadMe/adminka.gif" width="100%">
+<img src="./media/Readme/adminka.gif" width="100%">
