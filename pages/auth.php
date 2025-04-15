@@ -44,7 +44,7 @@ if(array_key_exists('id_user',$_SESSION)){
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" pattern='[0-9A-Za-z\s\-\w]{2,30}' required>
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" minlength="6" required>
                         <div class="valid-feedback">
                             Looks good
                         </div>
